@@ -1,0 +1,24 @@
+CREATE TABLE categories
+(
+    c_id int NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    PRIMARY KEY (c_id)
+);
+CREATE TABLE priority
+(
+    p_id int NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    PRIMARY KEY (p_id)
+);
+CREATE TABLE tasks
+(
+    t_id int NOT NULL AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    deadline DATE,
+    c_id int,
+    p_id int,
+    FOREIGN KEY (c_id) REFERENCES categories(c_id),
+    FOREIGN KEY (p_id) REFERENCES priority(p_id),
+    PRIMARY KEY (t_id)
+)
