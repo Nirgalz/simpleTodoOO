@@ -2,23 +2,14 @@
 ini_set('display_errors', 1);
 date_default_timezone_set('UTC');
 
-
 class connection
 {
-    var $host;
-    var $username;
-    var $password;
-    var $db;
+    var $host = "localhost";
+    var $username = "root";
+    var $password = "momo";
+    var $db = "todo";
     var $mysqli;
-
-    function __construct($par1, $par2, $par3, $par4)
-    {
-        $this->host = $par1;
-        $this->username = $par2;
-        $this->password = $par3;
-        $this->db = $par4;
-    }
-
+    
     function connect()
     {
         $this->mysqli = new mysqli($this->host, $this->username, $this->password, $this->db);
@@ -29,7 +20,6 @@ class connection
         }
     }
 }
-
 
 class categories extends connection
 {
@@ -53,10 +43,9 @@ class categories extends connection
         $title = $_REQUEST['new_cat'];
         $query = $this->mysqli->query("INSERT INTO categories(c_title) VALUES ('$title')");
     }
-
 }
 
-$cat = new categories("localhost", "root", "momo", "todo");
+$cat = new categories();
 
 class viewer extends connection
 {
@@ -91,7 +80,7 @@ class viewer extends connection
         }
     }
 }
-$view = new viewer("localhost", "root", "momo", "todo");
+$view = new viewer();
 
 class tasks extends connection{
     var $categories;
@@ -120,9 +109,7 @@ class tasks extends connection{
             $p_id = $_REQUEST['p_id'];
             $deadline = $_REQUEST['deadline'];
             $this->mysqli->query("INSERT INTO tasks(title, c_id, p_id, deadline) VALUES ('$title','$c_id', '$p_id', '$deadline')");
-
     }
-
 }
 
-$todo = new tasks("localhost", "root", "momo", "todo");
+$todo = new tasks();
