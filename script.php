@@ -168,20 +168,6 @@ class edition extends connection {
             }
         }
     }
-    function save_edit() {
-        if (isset($_GET['ides'])) {
-            $id = $_GET['ides'];
-            connection::connect();
-      
-        }
-        $id= $_REQUEST['ides'];
-        $title = $_REQUEST['title'];
-        $c_id = $_REQUEST['c_id'];
-        $p_id = $_REQUEST['p_id'];
-        $deadline = $_REQUEST['deadline'];
-
-        $this->mysqli->query("UPDATE tasks SET title='$title', c_id='$c_id', p_id='$task->$p_id', deadline='$deadline' WHERE t_id='$id'");
-    }
 }
 
 $editme = new edition();

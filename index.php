@@ -37,7 +37,7 @@ include('script.php');
             $view->delete();
             $view->view();
         }
-        elseif (isset($_GET['title'])) {
+        elseif (isset($_GET['id'])) {
             $todo->createTodo();
             $view->view();
         }
@@ -85,12 +85,7 @@ include('script.php');
 
     <button>ADD TODO</button>
     </form>
-    <?php
-    
-    if (isset($_GET['id'])) {
-        $todo->createTodo();
-    }
-    ?>
+
 </div>
 
 
